@@ -335,13 +335,17 @@
 
 
             <div class="flex-cont-bloc-exp">
+                {% if experiences and experiences is not null %}
+                    {% for key, experience in experiences %}
+                        <div class="bloc">
+                            <div class="contenu-bloc">
+                                <p class="titre-section-bloc">{{ experience.titre }}, {{ experience.debutExp }} - {{ experience.finExp }}</p>
+                                <p class="txt-section">{{ experience.description }}</p>
+                            </div>
+                        </div>
 
-                <div class="bloc bloc1">
-                    <div class="contenu-bloc">
-                        <p class="titre-section-bloc">Google, 2019</p>
-                        <p class="txt-section">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In perferendis dignissimos doloribus quaerat corrupti facere ratione modi vel. Voluptatem minima facilis eaque eum quia voluptatibus dolorem minus incidunt repellendus culpa?</p>
-                    </div>
-                </div>
+                    {% endfor %}
+                {% endif %}
 
                 <div class="bloc bloc2">
                     <div class="contenu-bloc">
