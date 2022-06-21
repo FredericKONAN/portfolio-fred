@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Experiences;
+use App\Entity\Project;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,10 +24,12 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        $produts =  $this->em->getRepository(Experiences::class)->findAll();
+        $experiences =  $this->em->getRepository(Experiences::class)->findAll();
+        $projets     =  $this->em->getRepository(Project::class)->findAll();
 
         return $this->render('home/index.html.twig', [
-            'experiences' => $produts,
+            'experiences' => $experiences,
+            'projets' => $projets,
         ]);
     }
 }

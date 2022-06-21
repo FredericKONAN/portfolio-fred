@@ -157,16 +157,18 @@
         <h2 class="titre-port">Mon Portfolio</h2>
 
         <div class="cont-portfolio">
-
-
-            <div class="item vague1">
-                <div class="cont-img-port">
-                    <img src="{{ asset('assets/ressources/bootstrap.jpg') }}" alt="img portfolio">
-                </div>
-                <h3>Mon fabuleux projet</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, dolore?</p>
-                <a href="#" class="btn-projets">Découvrez le projet</a>
-            </div>
+            {% if projets and projets is not null %}
+                {% for  projet in projets %}
+                    <div class="item vague1">
+                        <div class="cont-img-port">
+                            <img src="/uploads/{{ projet.illustration }}" alt="{{ projet.titre }}">
+                        </div>
+                        <h3>{{ projet.titre }}</h3>
+                        <p>{{ projet.description }}</p>
+                        <a href="{{ projet.btnUrl }}" class="btn-projets">{{projet.btnTitle}}</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
 
             <div class="item vague1">
                 <div class="cont-img-port">
@@ -262,7 +264,6 @@
 
         <div class="grille-skill">
 
-
             <div class="range-cont">
                 <p class="label-skill">PHP</p>
                 <p class="number-skill">90%</p>
@@ -336,7 +337,7 @@
 
             <div class="flex-cont-bloc-exp">
                 {% if experiences and experiences is not null %}
-                    {% for key, experience in experiences %}
+                    {% for  experience in experiences %}
                         <div class="bloc">
                             <div class="contenu-bloc">
                                 <p class="titre-section-bloc">{{ experience.titre }}, {{ experience.debutExp }} - {{ experience.finExp }}</p>
