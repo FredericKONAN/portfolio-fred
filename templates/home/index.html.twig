@@ -72,21 +72,21 @@
     <section class="accueil" id="accueil">
         <h1>Bienvenue sur mon portfolio</h1>
         <p class="txt-animation"></p>
-        <a href="#" class="btn-acc btn-acc1">Portfolio</a>
-        <a href="#" class="btn-acc btn-acc2">Expériences</a>
+        <a href="#port" class="btn-acc btn-acc1">Portfolio</a>
+        <a href="#exp" class="btn-acc btn-acc2">Expériences</a>
 
         <div class="medias">
-            <a href="https://github.com" target="blank">
+            <a href="https://github.com/FredericKONAN/laboutiquefredmoye" target="blank">
                 <div class="media media1">
                     <img src="{{ asset('assets/ressources/github.svg') }}" alt="github icone" class="icone-medias">
                 </div>
             </a>
-            <a href="https://linkedin.com" target="blank">
+            <a href="https://www.linkedin.com/in/kouakou-konan-1b7440174/" target="blank">
                 <div class="media media2">
                     <img src="{{ asset('assets/ressources/linkedin.svg') }}" alt="linkedin icone" class="icone-medias">
                 </div>
             </a>
-            <a href="https://twitter.com" target="blank">
+            <a href="https://twitter.com/FredericAmourer" target="blank">
                 <div class="media media3">
                     <img src="{{ asset('assets/ressources/twitter.svg') }}" alt="twitter icone" class="icone-medias">
                 </div>
@@ -103,50 +103,50 @@
     <!-- Section Présentation -->
 
     <section class="presentation" id="pres">
-
-        <h2 class="titre-pres">Lorem ipsum dolor sit amet.</h2>
+        {% if presentations and presentations is not null %}
+        {% for  presentation in presentations %}
+        <h2 class="titre-pres">{{ presentation.title }}</h2>
 
         <div class="container-presentation">
 
             <div class="fond-forme"></div>
 
             <div class="pres-gauche">
-                <h3>Laborum cumque aliquid ut pariatur, natus maxime.</h3>
+                <h3>{{ presentation.soustitle }}</h3>
                 <hr>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dignissimos quisquam rerum aliquam quasi vitae nisi expedita debitis cupiditate asperiores optio eveniet labore, vel beatae!</p>
+                <p>{{ presentation.p1 }}</p>
                 <br>
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi facere illum ullam exercitationem praesentium veniam?
-                </p>
+                <p>{{ presentation.p2 }}</p>
             </div>
 
             <div class="pres-droite">
                 <ul class="liste-presentation">
                     <li class="item-liste i1">
                         <span class="chiffre-style">1.</span>
-                        <p class="txt-liste">Développeur Back-end</p>
+                        <p class="txt-liste">{{presentation.info1}}</p>
                     </li>
                     <li class="item-liste i2">
                         <span class="chiffre-style">2.</span>
-                        <p class="txt-liste">Spécialiste UI</p>
+                        <p class="txt-liste">{{presentation.info2}}</p>
                     </li>
                     <li class="item-liste i3">
                         <span class="chiffre-style">3.</span>
-                        <p class="txt-liste">UX Design expert</p>
+                        <p class="txt-liste">{{presentation.info3}}</p>
                     </li>
                     <li class="item-liste i4">
                         <span class="chiffre-style">4.</span>
-                        <p class="txt-liste">Développeur Front-End</p>
+                        <p class="txt-liste">{{presentation.info4}}</p>
                     </li>
                     <li class="item-liste i5">
                         <span class="chiffre-style">5.</span>
-                        <p class="txt-liste">Développeur Full-Stack</p>
+                        <p class="txt-liste">{{presentation.info5}}</p>
                     </li>
                 </ul>
             </div>
 
         </div>
-
+        {% endfor %}
+        {% endif %}
     </section>
 
     <!-- Section Portfolio -->
@@ -282,8 +282,6 @@
                 <div class="barre-skill b3"></div>
                 <div class="barre-grises"></div>
             </div>
-
-
             <div class="range-cont">
                 <p class="label-skill">SQL</p>
                 <p class="number-skill">80%</p>
@@ -302,8 +300,6 @@
                 <div class="barre-skill b6"></div>
                 <div class="barre-grises"></div>
             </div>
-
-
         </div>
 
     </section>
@@ -361,13 +357,6 @@
                         <p class="txt-section">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vel ipsam nulla aliquid quae beatae ut et cum libero molestiae?</p>
                     </div>
                 </div>
-
-                <div class="bloc bloc4">
-                    <div class="contenu-bloc">
-                        <p class="titre-section-bloc">Apple, 2012-2014</p>
-                        <p class="txt-section">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, vel ipsam nulla aliquid quae beatae ut et cum libero molestiae?</p>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -394,19 +383,27 @@
     <section class="section-contact" id="contact">
 
         <h2><strong>Rentrons</strong> en Contact</h2>
+{#        <div class="col-md-4">#}
+{#            <strong>Frederic KONAN</strong>#}
+{#            <hr>#}
+{#            07 58 96 66 55<br/>#}
+{#            Abidjan plateau Dokui.<br/>#}
+{#            contact@fredmoye.com<br/>#}
+{#        </div>#}
 
         <div class="container-form">
 
             <form class="form-bloc">
 
                 <div class="form-groupe">
-                    <label for="prenom">Prénom</label>
+                    <label for="prenom">Nom et Prénoms</label>
                     <input type="text" required maxlength="16" id="prenom">
                 </div>
                 <div class="form-groupe">
-                    <label for="nom">Nom</label>
-                    <input type="text" required maxlength="16" id="nom">
+                    <label for="email">Email</label>
+                    <input type="email" required maxlength="50" id="email">
                 </div>
+
                 <div class="form-groupe">
                     <textarea id="txt" placeholder="Votre message" required></textarea>
                 </div>

@@ -4,6 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\Experiences;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class ExperiencesCrudController extends AbstractCrudController
 {
@@ -12,14 +15,20 @@ class ExperiencesCrudController extends AbstractCrudController
         return Experiences::class;
     }
 
-    /*
+
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new('titre', 'Titre'),
+            TextareaField::new('debutExp', 'Date debut'),
+            TextField::new('finExp', 'Date de fin'),
+            TextareaField::new('description', 'Description'),
+            ImageField::new('icone', 'Icone')
+                ->setBasePath('uploads/')
+                ->setUploadDir('public/uploads')
+                ->setUploadedFileNamePattern('[randomhash].[extension]')
+                ->setRequired(false),
         ];
     }
-    */
+
 }

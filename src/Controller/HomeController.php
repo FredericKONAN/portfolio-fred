@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Experiences;
+use App\Entity\Presentation;
 use App\Entity\Project;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,10 +27,12 @@ class HomeController extends AbstractController
     {
         $experiences =  $this->em->getRepository(Experiences::class)->findAll();
         $projets     =  $this->em->getRepository(Project::class)->findAll();
+        $presentations     =  $this->em->getRepository(Presentation::class)->findAll();
 
         return $this->render('home/index.html.twig', [
             'experiences' => $experiences,
             'projets' => $projets,
+            'presentations' => $presentations,
         ]);
     }
 }

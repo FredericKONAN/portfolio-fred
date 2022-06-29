@@ -37,6 +37,11 @@ class Experiences
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable="true")
+     */
+    private $icone;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class Experiences
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getIcone(): ?string
+    {
+        return $this->icone;
+    }
+
+    public function setIcone(string $icone): self
+    {
+        $this->icone = $icone;
 
         return $this;
     }
